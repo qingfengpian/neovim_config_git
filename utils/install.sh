@@ -2,7 +2,8 @@
 # Neovim 配置与插件安装脚本
 # 作者 Eddie Kao （由 qingfeng 修改为 Neovim 版本）
 
-backup_rand=$RANDOM
+# backup_rand=$RANDOM	替换成 backup_rand=$(date +%s) 
+backup_rand=$(date +%s)
 nvim_folder="$HOME/.config"
 
 # 先检查是否存在 ~/.config 文件夹
