@@ -20,11 +20,12 @@ vim.g.airline_theme = 'dark'
 -- 主题插件 vim-airline-themes 主题在如下位置
 -- ~\.local\share\nvim\plugged\vim-airline-themes\autoload\airline\themes
 
-" 自定义状态栏分区
-let g:airline_section_a = '%{mode(1)}'          " 模式
-let g:airline_section_b = '%{airline#extensions#branch#get_head()}' " Git 分支
-let g:airline_section_c = '%f %m'               " 文件名+修改状态
-let g:airline_section_z = '%l/%L:%c'            " 行号/总行数:列号
+-- 自定义状态栏分区
+vim.g.airline_section_a = '%{mode(1)}'          -- 模式
+vim.g.airline_section_b = '%{airline#extensions#branch#get_head()}' -- Git 分支
+vim.g.airline_section_c = '%f %m'               -- 文件名+修改状态
+vim.g.airline_section_z = '%l/%L:%c'            -- 行号/总行数:列号
+
 
 -- ❄❄❄❄❄❄❄❄❄❄❄❄❄❄❄❄❄❄❄❄❄❄❄❄❄❄❄❄❄❄❄❄❄❄❄❄❄❄❄❄❄❄❄❄❄❄❄❄
 
