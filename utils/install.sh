@@ -11,7 +11,7 @@ if [ -d "$HOME/.config" ]; then
   read -p "是否要先备份你的 .config 文件夹？ [y/n] " ans
   if [ "$ans" = "y" ]; then
     echo "正在备份原始 ~/.config 到 ~/.config-$(date +%Y%m%d)-$backup_rand"
-    mv "$HOME/.config" "$HOME/.config-$(date +%Y%m%d)-$backup_rand"
+    cp -r "$HOME/.config" "$HOME/.config-$(date +%Y%m%d)-$backup_rand"
     echo "已备份到 ~/.config-$(date +%Y%m%d)-$backup_rand"
   else
     echo "你已有 ~/.config，放弃备份"
