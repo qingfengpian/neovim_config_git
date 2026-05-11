@@ -5,11 +5,18 @@
 nvim_folder="$HOME/.config"
 backup_rand=$RANDOM
 
-# 检查是否存在 ~/.config 文件夹，如果存在则先备份
+# 先检查是否存在 ~/.config 文件夹，如果存在则先备份
 if [ -d "$HOME/.config" ]; then
-  echo -e "\033[0;31m检测到已有 ~/.config 文件夹，准备备份...\033[0;m"
-  mv "$HOME/.config" "$HOME/.config-$(date +%Y%m%d)-$backup_rand"
-  echo "已备份到 $HOME/.config-$(date +%Y%m%d)-$backup_rand"
+  echo -e "\033[0;31m检测到已有 ~/.config 文件夹。\033[0;m"
+  read -p "是否要先备份你的 .config 文件夹？ [y/n] " ans
+  if [ "$ans" = "y" ]; then
+    echo "正在备份原始 ~/.config 到 ~/.config-$(date +%Y%m%d)-$backup_rand"
+    mv "$HOME/.config" "$HOME/.config-$(date +%Y%m%d)-$backup_rand"
+    echo "已备份到 ~/.config-$(date +%Y%m%d)-$backup_rand"
+  else
+    echo "你已有 ~/.config，放弃备份"
+    exit 1
+  fi
 fi
 
 # 检查是否已有 nvim 配置目录
