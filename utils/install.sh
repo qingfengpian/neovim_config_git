@@ -2,7 +2,7 @@
 # Neovim config and plugins installer
 # created by Eddie Kao (modified for Neovim by qingfeng)
 
-nvim_folder="$HOME/.config/nvim"
+nvim_folder="$HOME/.config"
 backup_rand=$RANDOM
 
 # 检查是否已有 nvim 配置目录
