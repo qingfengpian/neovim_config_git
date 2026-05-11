@@ -2,10 +2,10 @@
 # Neovim 配置与插件安装脚本
 # 作者 Eddie Kao （由 qingfeng 修改为 Neovim 版本）
 
-nvim_folder="$HOME/.config"
 backup_rand=$RANDOM
+nvim_folder="$HOME/.config"
 
-# 先检查是否存在 ~/.config 文件夹，如果存在则先备份
+# 先检查是否存在 ~/.config 文件夹
 if [ -d "$HOME/.config" ]; then
   echo -e "\033[0;31m检测到已有 ~/.config 文件夹。\033[0;m"
   read -p "是否要先备份你的 .config 文件夹？ [y/n] " ans
@@ -14,25 +14,14 @@ if [ -d "$HOME/.config" ]; then
     cp -r "$HOME/.config" "$HOME/.config-$(date +%Y%m%d)-$backup_rand"
     echo "已备份到 ~/.config-$(date +%Y%m%d)-$backup_rand"
   else
-    echo "你已有 ~/.config，放弃备份"
+    echo "你已有 ~/.config，放弃备份。"
     exit 1
   fi
+else
+  echo "未检测到 ~/.config 文件夹，将直接下载配置。"
 fi
 
-# 检查是否已有 nvim 配置目录
-if [ -d "$nvim_folder" ]; then
-  echo -e "\033[0;31m检测到已有 ~/.config/nvim 文件夹。\033[0;m"
-  read -p "是否要先备份你的 nvim 文件夹？ [y/n] " ans
-  if [ "$ans" = "y" ]; then
-    echo "正在备份原始 $nvim_folder 到 $nvim_folder-$(date +%Y%m%d)-$backup_rand"
-    mv "$nvim_folder" "$nvim_folder-$(date +%Y%m%d)-$backup_rand"
-  else
-    echo "你已有 $nvim_folder，请先手动备份。"
-    exit 1
-  fi
-fi
-
-# 检查是否安装 Git
+# 检查 Git 是否安装
 if command -v git >/dev/null 2>&1; then
   /usr/bin/env git clone https://github.com/qingfengpian/neovim_config_git.git "$nvim_folder"
 else
